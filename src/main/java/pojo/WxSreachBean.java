@@ -1,9 +1,9 @@
 /**
   * Copyright 2018 bejson.com 
   */
-package pojo;
+package JavaBean;
+
 import java.util.List;
-import java.util.Date;
 
 /**
  * Auto-generated: 2018-01-23 19:8:34
@@ -13,10 +13,10 @@ import java.util.Date;
  */
 public class WxSreachBean {
 
-    private HourLowestPrice HourLowestPrice;
-    private TrainRecommand TrainRecommand;
-    private List<FlightInfoSimpleList> FlightInfoSimpleList;
-    private List<RecommendFlights> RecommendFlights;
+    private pojo.HourLowestPrice HourLowestPrice;
+    private pojo.TrainRecommand TrainRecommand;
+    private List<pojo.FlightInfoSimpleList> FlightInfoSimpleList;
+    private List<pojo.RecommendFlights> RecommendFlights;
     private int Refc;
     private List<String> CompanyList;
     private String FlyOffCity;
@@ -25,26 +25,26 @@ public class WxSreachBean {
     private String ArriveCityCode;
     private String FlyOffCode;
     private String ArriveCode;
-    private Date FlyOffTime;
-    private NearCitys NearCitys;
-    public void setHourLowestPrice(HourLowestPrice HourLowestPrice) {
+    private String FlyOffTime;
+    private pojo.NearCitys NearCitys;
+    public void setHourLowestPrice(pojo.HourLowestPrice HourLowestPrice) {
          this.HourLowestPrice = HourLowestPrice;
      }
-     public HourLowestPrice getHourLowestPrice() {
+     public pojo.HourLowestPrice getHourLowestPrice() {
          return HourLowestPrice;
      }
 
-    public void setTrainRecommand(TrainRecommand TrainRecommand) {
+    public void setTrainRecommand(pojo.TrainRecommand TrainRecommand) {
          this.TrainRecommand = TrainRecommand;
      }
-     public TrainRecommand getTrainRecommand() {
+     public pojo.TrainRecommand getTrainRecommand() {
          return TrainRecommand;
      }
 
-    public void setFlightInfoSimpleList(List<FlightInfoSimpleList> FlightInfoSimpleList) {
+    public void setFlightInfoSimpleList(List<pojo.FlightInfoSimpleList> FlightInfoSimpleList) {
          this.FlightInfoSimpleList = FlightInfoSimpleList;
      }
-     public List<FlightInfoSimpleList> getFlightInfoSimpleList() {
+     public List<pojo.FlightInfoSimpleList> getFlightInfoSimpleList() {
          return FlightInfoSimpleList;
      }
 
@@ -111,17 +111,17 @@ public class WxSreachBean {
          return ArriveCode;
      }
 
-    public void setFlyOffTime(Date FlyOffTime) {
+    public void setFlyOffTime(String FlyOffTime) {
          this.FlyOffTime = FlyOffTime;
      }
-     public Date getFlyOffTime() {
+     public String getFlyOffTime() {
          return FlyOffTime;
      }
 
-    public void setNearCitys(NearCitys NearCitys) {
+    public void setNearCitys(pojo.NearCitys NearCitys) {
          this.NearCitys = NearCitys;
      }
-     public NearCitys getNearCitys() {
+     public pojo.NearCitys getNearCitys() {
          return NearCitys;
      }
 

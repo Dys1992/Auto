@@ -1,6 +1,9 @@
-package JavaBean;
+package pojo;
 
-import sun.util.calendar.BaseCalendar;
+import JavaBean.FlightInfoSimpleList;
+import JavaBean.HourLowestPrice;
+import JavaBean.NearCitys;
+import JavaBean.TrainRecommand;
 
 import java.util.List;
 
