@@ -32,6 +32,7 @@ public class GetWxResponse {
             String arr = list.get(i).getArrCode();
             String dep = list.get(i).getDepCode();
             String param = getParam.getParam(arr,dep, flightOffTime.getDate());
+            System.out.println(param);
             list1.add(http.getRequests(url,param).toString());
         }
 
