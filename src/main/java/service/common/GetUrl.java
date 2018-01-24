@@ -1,4 +1,4 @@
-package service.wx;
+package service.wx.common;
 
 import org.apache.log4j.Logger;
 

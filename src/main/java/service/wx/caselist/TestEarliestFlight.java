@@ -5,14 +5,9 @@ import common.CompareTime;
 import common.NowTime;
 import common.flightinfo.cabinsInfoVO;
 import common.flightinfo.flightInfoVO;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import service.wx.GetWxResponse;
 
-import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class TestEarliestFlight {
