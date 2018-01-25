@@ -1,4 +1,4 @@
-package service.wx.common;
+package searchcase.common;
 
 /**
  * 获取Param

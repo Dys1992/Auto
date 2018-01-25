@@ -13,9 +13,9 @@ import java.util.List;
  */
 public class FlightInfoSimpleList {
 
-    private Date flyOffTime;
+    private String flyOffTime;
     private String flyOffOnlyTime;
-    private Date arrivalTime;
+    private String arrivalTime;
     private String arrivalOnlyTime;
     private String originAirportCode;
     private String originAirportShortName;
@@ -70,10 +70,10 @@ public class FlightInfoSimpleList {
     private String ml;
     private boolean ihml;
     private String son;
-    public void setFlyOffTime(Date flyOffTime) {
+    public void setFlyOffTime(String flyOffTime) {
          this.flyOffTime = flyOffTime;
      }
-     public Date getFlyOffTime() {
+     public String getFlyOffTime() {
          return flyOffTime;
      }
 
@@ -84,10 +84,10 @@ public class FlightInfoSimpleList {
          return flyOffOnlyTime;
      }
 
-    public void setArrivalTime(Date arrivalTime) {
+    public void setArrivalTime(String arrivalTime) {
          this.arrivalTime = arrivalTime;
      }
-     public Date getArrivalTime() {
+     public String getArrivalTime() {
          return arrivalTime;
      }
 

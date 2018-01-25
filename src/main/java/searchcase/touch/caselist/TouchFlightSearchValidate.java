@@ -1,11 +1,11 @@
-package validate;
+package service.touch.caselist;
 
 import pojo.TouchFlightSearch;
 import com.alibaba.fastjson.JSON;
 import exceldata.DataProviderSet;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import service.wx.GetTFlightSearchResponse;
+import service.touch.GetTFlightSearchResponse;
 
 import java.util.HashMap;
 

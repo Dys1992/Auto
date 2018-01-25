@@ -1,7 +1,7 @@
 /**
   * Copyright 2018 bejson.com 
   */
-package JavaBean;
+package pojo;
 
 import java.util.List;
 
@@ -15,8 +15,8 @@ public class WxSreachBean {
 
     private pojo.HourLowestPrice HourLowestPrice;
     private pojo.TrainRecommand TrainRecommand;
-    private List<pojo.FlightInfoSimpleList> FlightInfoSimpleList;
-    private List<pojo.RecommendFlights> RecommendFlights;
+    private List<FlightInfoSimpleList> FlightInfoSimpleList;
+    private List<RecommendFlights> RecommendFlights;
     private int Refc;
     private List<String> CompanyList;
     private String FlyOffCity;

@@ -1,6 +1,4 @@
-package service.wx.common;
-
-import org.apache.log4j.Logger;
+package searchcase.common;
 
 import java.io.*;
 import java.util.Properties;
@@ -13,7 +11,7 @@ public class GetUrl {
     public String geturl(String channel) throws IOException {
         Properties prop = new Properties();
         InputStream in = null;
-        File file = new File("src//main//java//common//url.properties");
+        File file = new File("src//main//resources//url.properties");
         try {
 
             in = new BufferedInputStream(new FileInputStream(file));

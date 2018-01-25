@@ -1,23 +1,29 @@
-package service.wx.common;
+package searchcase.common;
 
 
-import common.FlightOffTime;
-import common.HttpRequests;
+import util.DateUtil;
+import util.HttpRequests;
 import common.Logger;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.HashMap;
 
-public class GetWxSearchResponse {
-    public static final Logger log = Logger.getLogger(GetWxSearchResponse.class);
+public class GetSearchResponse {
+    public static final Logger log = Logger.getLogger(GetSearchResponse.class);
 
     public String getWxResponse(HashMap<String, String> data,String channel){
         String response = null;
         GetUrl getUrl = new GetUrl();
-        FlightOffTime flightOffTime = new FlightOffTime();
         try {
             String wxSearchUrl = getUrl.geturl(channel);
-            String departureDate = flightOffTime.getDate();
+            String departureDate = null;
+            try {
+                departureDate = DateUtil.getToday(1);
+                log.error("起飞日期获取失败");
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             String depCode = data.get("departure");
             String arrCode = data.get("arrival");
             String userIp = data.get("userip");

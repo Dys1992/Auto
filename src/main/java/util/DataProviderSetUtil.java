@@ -11,4 +11,14 @@ public  class DataProviderSet {
         ExcelData e=new ExcelData("TFlightSearchData", "TFlightSearch");
         return e.getExcelData();
     }
+
+    @DataProvider(name="testWxFlightSearch")
+    public  static  Object[][] Numbers1() throws BiffException, IOException {
+        ExcelData e=new ExcelData("TFlightSearchData", "WxSearch");
+        return e.getExcelData();
+    }
+
+
+
+
 }

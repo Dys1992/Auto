@@ -77,7 +77,7 @@ public class ExcelData {
      */
     public String getPath() throws IOException {
         File directory = new File(".");
-        sourceFile = directory.getCanonicalPath() + "\\src\\dataTemples\\" + fileName + ".xls";
+        sourceFile = directory.getCanonicalPath() + "\\src\\datatemples\\" + fileName + ".xls";
        // D:\MyConfiguration\CMY48519\Demo\new\Auto\src
       //  sourceFile ="D:\\MyConfiguration\\CMY48519\\Demo\\new\\Auto\\src\\dataTemples\\testdatas.xls";
 

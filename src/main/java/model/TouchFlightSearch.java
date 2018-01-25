@@ -1,9 +1,9 @@
 package pojo;
 
-import JavaBean.FlightInfoSimpleList;
-import JavaBean.HourLowestPrice;
-import JavaBean.NearCitys;
-import JavaBean.TrainRecommand;
+import pojo.FlightInfoSimpleList;
+import pojo.HourLowestPrice;
+import pojo.NearCitys;
+import pojo.TrainRecommand;
 
 import java.util.List;
 
