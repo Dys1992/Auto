@@ -1,7 +1,7 @@
 package searchcase.wx.caselist;
 
 import com.alibaba.fastjson.JSONObject;
-import util.NowTime;
+import util.DateUtil;
 import util.DataProviderSetUtil;
 import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class WxCompareTime {
+public class WxCompareTimeTest {
 
     public static final Logger log = Logger.getLogger(WxFlightSearchResponse.class);
     List list =new ArrayList();
@@ -35,8 +35,8 @@ public class WxCompareTime {
         }
         Collections.sort(list);
         String time =  list.get(0).toString();
-        NowTime nowTime = new NowTime();
-        String time2 = nowTime.nowTime();
+
+        String time2 = DateUtil.getNoSecondTime();
         CompareTime compareTime = new CompareTime();
         if (compareTime.compareTime(time,time2) == true){
             log.info("当前所有航班的起飞时间晚于当前时间");
