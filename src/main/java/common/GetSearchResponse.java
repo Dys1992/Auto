@@ -1,9 +1,8 @@
-package searchcase.common;
+package common;
 
 
 import util.DateUtil;
-import util.HttpRequests;
-import common.Logger;
+import util.HttpRequests;`
 
 import java.io.IOException;
 import java.text.ParseException;

@@ -1,4 +1,4 @@
-package searchcase.common;
+package common;
 
 /**
  * 获取Param
