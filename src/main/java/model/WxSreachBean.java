@@ -1,7 +1,7 @@
 /**
   * Copyright 2018 bejson.com 
   */
-package pojo;
+package model;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import java.util.List;
  */
 public class WxSreachBean {
 
-    private pojo.HourLowestPrice HourLowestPrice;
-    private pojo.TrainRecommand TrainRecommand;
+    private model.HourLowestPrice HourLowestPrice;
+    private model.TrainRecommand TrainRecommand;
     private List<FlightInfoSimpleList> FlightInfoSimpleList;
     private List<RecommendFlights> RecommendFlights;
     private int Refc;
@@ -26,25 +26,25 @@ public class WxSreachBean {
     private String FlyOffCode;
     private String ArriveCode;
     private String FlyOffTime;
-    private pojo.NearCitys NearCitys;
-    public void setHourLowestPrice(pojo.HourLowestPrice HourLowestPrice) {
+    private model.NearCitys NearCitys;
+    public void setHourLowestPrice(model.HourLowestPrice HourLowestPrice) {
          this.HourLowestPrice = HourLowestPrice;
      }
-     public pojo.HourLowestPrice getHourLowestPrice() {
+     public model.HourLowestPrice getHourLowestPrice() {
          return HourLowestPrice;
      }
 
-    public void setTrainRecommand(pojo.TrainRecommand TrainRecommand) {
+    public void setTrainRecommand(model.TrainRecommand TrainRecommand) {
          this.TrainRecommand = TrainRecommand;
      }
-     public pojo.TrainRecommand getTrainRecommand() {
+     public model.TrainRecommand getTrainRecommand() {
          return TrainRecommand;
      }
 
-    public void setFlightInfoSimpleList(List<pojo.FlightInfoSimpleList> FlightInfoSimpleList) {
+    public void setFlightInfoSimpleList(List<model.FlightInfoSimpleList> FlightInfoSimpleList) {
          this.FlightInfoSimpleList = FlightInfoSimpleList;
      }
-     public List<pojo.FlightInfoSimpleList> getFlightInfoSimpleList() {
+     public List<model.FlightInfoSimpleList> getFlightInfoSimpleList() {
          return FlightInfoSimpleList;
      }
 
@@ -118,10 +118,10 @@ public class WxSreachBean {
          return FlyOffTime;
      }
 
-    public void setNearCitys(pojo.NearCitys NearCitys) {
+    public void setNearCitys(model.NearCitys NearCitys) {
          this.NearCitys = NearCitys;
      }
-     public pojo.NearCitys getNearCitys() {
+     public model.NearCitys getNearCitys() {
          return NearCitys;
      }
 

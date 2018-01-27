@@ -1,7 +1,7 @@
 /**
   * Copyright 2018 bejson.com 
   */
-package pojo;
+package model;
 import java.util.Date;
 
 /**
@@ -18,7 +18,7 @@ public class RecommendFlights {
     private String End;
     private String EndCity;
     private String EndAirPortShortName;
-    private Date Date;
+    private String Date;
     private String Week;
     private int Price;
     private String strFlyDate;
@@ -66,10 +66,10 @@ public class RecommendFlights {
          return EndAirPortShortName;
      }
 
-    public void setDate(Date Date) {
+    public void setDate(String Date) {
          this.Date = Date;
      }
-     public Date getDate() {
+     public String getDate() {
          return Date;
      }
 

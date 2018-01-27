@@ -1,9 +1,9 @@
-package pojo;
+package model;
 
-import pojo.FlightInfoSimpleList;
-import pojo.HourLowestPrice;
-import pojo.NearCitys;
-import pojo.TrainRecommand;
+import model.FlightInfoSimpleList;
+import model.HourLowestPrice;
+import model.NearCitys;
+import model.TrainRecommand;
 
 import java.util.List;
 
@@ -22,107 +22,103 @@ public class TouchFlightSearch {
     private String ArriveCityCode;
     private String FlyOffCode;
     private String ArriveCode;
- private String FlyOffTime;
+    private String FlyOffTime;
 
-    private NearCitys NearCitys;
-    public void setHourLowestPrice(HourLowestPrice HourLowestPrice) {
-        this.HourLowestPrice = HourLowestPrice;
-    }
-    public HourLowestPrice getHourLowestPrice() {
+    public model.HourLowestPrice getHourLowestPrice() {
         return HourLowestPrice;
     }
 
-    public void setTrainRecommand(TrainRecommand TrainRecommand) {
-        this.TrainRecommand = TrainRecommand;
+    public void setHourLowestPrice(model.HourLowestPrice hourLowestPrice) {
+        HourLowestPrice = hourLowestPrice;
     }
-    public TrainRecommand getTrainRecommand() {
+
+    public model.TrainRecommand getTrainRecommand() {
         return TrainRecommand;
     }
 
-    public void setFlightInfoSimpleList(List<FlightInfoSimpleList> FlightInfoSimpleList) {
-        this.FlightInfoSimpleList = FlightInfoSimpleList;
+    public void setTrainRecommand(model.TrainRecommand trainRecommand) {
+        TrainRecommand = trainRecommand;
     }
-    public List<FlightInfoSimpleList> getFlightInfoSimpleList() {
+
+    public List<model.FlightInfoSimpleList> getFlightInfoSimpleList() {
         return FlightInfoSimpleList;
     }
 
-    public void setRecommendFlights(List<String> RecommendFlights) {
-        this.RecommendFlights = RecommendFlights;
+    public void setFlightInfoSimpleList(List<model.FlightInfoSimpleList> flightInfoSimpleList) {
+        FlightInfoSimpleList = flightInfoSimpleList;
     }
+
     public List<String> getRecommendFlights() {
         return RecommendFlights;
     }
 
-    public void setRefc(int Refc) {
-        this.Refc = Refc;
+    public void setRecommendFlights(List<String> recommendFlights) {
+        RecommendFlights = recommendFlights;
     }
+
     public int getRefc() {
         return Refc;
     }
 
-    public void setCompanyList(List<String> CompanyList) {
-        this.CompanyList = CompanyList;
+    public void setRefc(int refc) {
+        Refc = refc;
     }
+
     public List<String> getCompanyList() {
         return CompanyList;
     }
 
-    public void setFlyOffCity(String FlyOffCity) {
-        this.FlyOffCity = FlyOffCity;
+    public void setCompanyList(List<String> companyList) {
+        CompanyList = companyList;
     }
+
     public String getFlyOffCity() {
         return FlyOffCity;
     }
 
-    public void setFlyOffCityCode(String FlyOffCityCode) {
-        this.FlyOffCityCode = FlyOffCityCode;
+    public void setFlyOffCity(String flyOffCity) {
+        FlyOffCity = flyOffCity;
     }
+
     public String getFlyOffCityCode() {
         return FlyOffCityCode;
     }
 
-    public void setArriveCity(String ArriveCity) {
-        this.ArriveCity = ArriveCity;
+    public void setFlyOffCityCode(String flyOffCityCode) {
+        FlyOffCityCode = flyOffCityCode;
     }
+
     public String getArriveCity() {
         return ArriveCity;
     }
 
-    public void setArriveCityCode(String ArriveCityCode) {
-        this.ArriveCityCode = ArriveCityCode;
+    public void setArriveCity(String arriveCity) {
+        ArriveCity = arriveCity;
     }
+
     public String getArriveCityCode() {
         return ArriveCityCode;
     }
 
-    public void setFlyOffCode(String FlyOffCode) {
-        this.FlyOffCode = FlyOffCode;
+    public void setArriveCityCode(String arriveCityCode) {
+        ArriveCityCode = arriveCityCode;
     }
+
     public String getFlyOffCode() {
         return FlyOffCode;
     }
 
-    public void setArriveCode(String ArriveCode) {
-        this.ArriveCode = ArriveCode;
+    public void setFlyOffCode(String flyOffCode) {
+        FlyOffCode = flyOffCode;
     }
+
     public String getArriveCode() {
         return ArriveCode;
     }
 
-/*    public void setFlyOffTime(Date FlyOffTime) {
-        this.FlyOffTime = FlyOffTime;
+    public void setArriveCode(String arriveCode) {
+        ArriveCode = arriveCode;
     }
-    public Date getFlyOffTime() {
-        return FlyOffTime;
-    }*/
-
-    public void setNearCitys(NearCitys NearCitys) {
-        this.NearCitys = NearCitys;
-    }
-    public NearCitys getNearCitys() {
-        return NearCitys;
-    }
-
 
     public String getFlyOffTime() {
         return FlyOffTime;

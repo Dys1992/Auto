@@ -1,7 +1,7 @@
 /**
   * Copyright 2018 bejson.com 
   */
-package pojo;
+package model;
 import java.util.List;
 
 /**
