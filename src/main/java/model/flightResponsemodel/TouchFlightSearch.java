@@ -1,9 +1,4 @@
-package model;
-
-import model.FlightInfoSimpleList;
-import model.HourLowestPrice;
-import model.NearCitys;
-import model.TrainRecommand;
+package model.flightResponsemodel;
 
 import java.util.List;
 
@@ -24,27 +19,27 @@ public class TouchFlightSearch {
     private String ArriveCode;
     private String FlyOffTime;
 
-    public model.HourLowestPrice getHourLowestPrice() {
+    public model.flightResponsemodel.HourLowestPrice getHourLowestPrice() {
         return HourLowestPrice;
     }
 
-    public void setHourLowestPrice(model.HourLowestPrice hourLowestPrice) {
+    public void setHourLowestPrice(model.flightResponsemodel.HourLowestPrice hourLowestPrice) {
         HourLowestPrice = hourLowestPrice;
     }
 
-    public model.TrainRecommand getTrainRecommand() {
+    public model.flightResponsemodel.TrainRecommand getTrainRecommand() {
         return TrainRecommand;
     }
 
-    public void setTrainRecommand(model.TrainRecommand trainRecommand) {
+    public void setTrainRecommand(model.flightResponsemodel.TrainRecommand trainRecommand) {
         TrainRecommand = trainRecommand;
     }
 
-    public List<model.FlightInfoSimpleList> getFlightInfoSimpleList() {
+    public List<model.flightResponsemodel.FlightInfoSimpleList> getFlightInfoSimpleList() {
         return FlightInfoSimpleList;
     }
 
-    public void setFlightInfoSimpleList(List<model.FlightInfoSimpleList> flightInfoSimpleList) {
+    public void setFlightInfoSimpleList(List<model.flightResponsemodel.FlightInfoSimpleList> flightInfoSimpleList) {
         FlightInfoSimpleList = flightInfoSimpleList;
     }
 

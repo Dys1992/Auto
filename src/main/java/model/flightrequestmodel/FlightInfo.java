@@ -1,4 +1,4 @@
-package model.flightrequest;
+package model.flightrequestmodel;
 
 public class FlightInfo {
 

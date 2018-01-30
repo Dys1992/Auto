@@ -19,7 +19,7 @@ public class HttpResquestUtil {
      * @param param
      * @return
      */
-    public String postRequests(String url,String param){
+    public static String postRequests(String url,String param){
         PrintWriter out = null;
         String result = "";
         BufferedReader in = null;
@@ -74,7 +74,7 @@ public class HttpResquestUtil {
     }
 
 
-    public String getRequests(String url,String param){
+    public static String getRequests(String url,String param){
 
         String result = "";
         BufferedReader in = null;
