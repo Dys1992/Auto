@@ -1,7 +1,4 @@
-/**
-  * Copyright 2018 bejson.com 
-  */
-package model.flightResponsemodel;
+package model.flightresponsemodel;
 
 import java.util.List;
 
@@ -13,8 +10,8 @@ import java.util.List;
  */
 public class WxSreachBean {
 
-    private model.flightResponsemodel.HourLowestPrice HourLowestPrice;
-    private model.flightResponsemodel.TrainRecommand TrainRecommand;
+    private model.flightresponsemodel.HourLowestPrice HourLowestPrice;
+    private model.flightresponsemodel.TrainRecommand TrainRecommand;
     private List<FlightInfoSimpleList> FlightInfoSimpleList;
     private List<RecommendFlights> RecommendFlights;
     private int Refc;
@@ -26,25 +23,25 @@ public class WxSreachBean {
     private String FlyOffCode;
     private String ArriveCode;
     private String FlyOffTime;
-    private model.flightResponsemodel.NearCitys NearCitys;
-    public void setHourLowestPrice(model.flightResponsemodel.HourLowestPrice HourLowestPrice) {
+    private model.flightresponsemodel.NearCitys NearCitys;
+    public void setHourLowestPrice(model.flightresponsemodel.HourLowestPrice HourLowestPrice) {
          this.HourLowestPrice = HourLowestPrice;
      }
-     public model.flightResponsemodel.HourLowestPrice getHourLowestPrice() {
+     public model.flightresponsemodel.HourLowestPrice getHourLowestPrice() {
          return HourLowestPrice;
      }
 
-    public void setTrainRecommand(model.flightResponsemodel.TrainRecommand TrainRecommand) {
+    public void setTrainRecommand(model.flightresponsemodel.TrainRecommand TrainRecommand) {
          this.TrainRecommand = TrainRecommand;
      }
-     public model.flightResponsemodel.TrainRecommand getTrainRecommand() {
+     public model.flightresponsemodel.TrainRecommand getTrainRecommand() {
          return TrainRecommand;
      }
 
-    public void setFlightInfoSimpleList(List<model.flightResponsemodel.FlightInfoSimpleList> FlightInfoSimpleList) {
+    public void setFlightInfoSimpleList(List<model.flightresponsemodel.FlightInfoSimpleList> FlightInfoSimpleList) {
          this.FlightInfoSimpleList = FlightInfoSimpleList;
      }
-     public List<model.flightResponsemodel.FlightInfoSimpleList> getFlightInfoSimpleList() {
+     public List<model.flightresponsemodel.FlightInfoSimpleList> getFlightInfoSimpleList() {
          return FlightInfoSimpleList;
      }
 
@@ -118,10 +115,10 @@ public class WxSreachBean {
          return FlyOffTime;
      }
 
-    public void setNearCitys(model.flightResponsemodel.NearCitys NearCitys) {
+    public void setNearCitys(model.flightresponsemodel.NearCitys NearCitys) {
          this.NearCitys = NearCitys;
      }
-     public model.flightResponsemodel.NearCitys getNearCitys() {
+     public model.flightresponsemodel.NearCitys getNearCitys() {
          return NearCitys;
      }
 

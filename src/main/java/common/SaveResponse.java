@@ -2,9 +2,9 @@ package common;
 
 import com.alibaba.fastjson.JSON;
 import constants.FilePathConstants;
-import model.flightResponsemodel.Cabins;
-import model.flightResponsemodel.FlightInfoSimpleList;
-import model.flightResponsemodel.WxSreachBean;
+import model.flightresponsemodel.Cabins;
+import model.flightresponsemodel.FlightInfoSimpleList;
+import model.flightresponsemodel.WxSreachBean;
 import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
