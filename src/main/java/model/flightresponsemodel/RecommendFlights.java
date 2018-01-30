@@ -1,7 +1,7 @@
 /**
   * Copyright 2018 bejson.com 
   */
-package model.flightResponsemodel;
+package model.flightresponsemodel;
 
 /**
  * Auto-generated: 2018-01-23 19:8:34
