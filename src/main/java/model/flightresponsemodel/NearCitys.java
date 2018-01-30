@@ -1,7 +1,7 @@
 /**
   * Copyright 2018 bejson.com 
   */
-package model.flightResponsemodel;
+package model.flightresponsemodel;
 import java.util.List;
 
 /**
