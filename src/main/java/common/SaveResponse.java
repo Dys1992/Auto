@@ -1,6 +1,7 @@
 package common;
 
 import com.alibaba.fastjson.JSON;
+import common.DateUtil;
 import constants.FilePathConstants;
 import model.flightresponsemodel.Cabins;
 import model.flightresponsemodel.FlightInfoSimpleList;
@@ -9,6 +10,8 @@ import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
+
 import java.io.*;
 import java.text.ParseException;
 import java.util.List;
@@ -16,13 +19,14 @@ import java.util.List;
 public class SaveResponse {
     public static final Logger log = Logger.getLogger(SaveResponse.class);
 
+
     public void saveDate(String channel) throws IOException, ParseException {
 
         GetSearchResponse getSearchResponse = new GetSearchResponse();
-        List<String> list = getSearchResponse.getWxResponse(channel);
+        List<String> list = getSearchResponse.getResponse(channel);
         InputStream inputStream = new FileInputStream(FilePathConstants.excelFilePath);
         HSSFWorkbook workbook = new HSSFWorkbook(inputStream);
-        String excelName = channel+"SaveResponseData";
+        String excelName = channel+ DateUtil.getNoSecondTime();
         HSSFSheet sheet = workbook.createSheet(excelName);
 
         for(int i=0;i<list.size();i++){
@@ -35,7 +39,6 @@ public class SaveResponse {
                 int rows = sheet.getPhysicalNumberOfRows();
                 cabinsList = flightList.get(j).getCabins();
                 for(int k=0;k<cabinsList.size();k++){
-                    System.out.println(rows);
                     HSSFRow row = sheet.createRow(k+rows+1);
                     row.createCell(0).setCellValue(flightList.get(j).getArriveAirportCode());
                     row.createCell(1).setCellValue(flightList.get(j).getOriginAirportCode());
@@ -47,14 +50,13 @@ public class SaveResponse {
                     row.createCell(7).setCellValue(cabinsList.get(k).getMid());
                     row.createCell(8).setCellValue(cabinsList.get(k).getFpoid());
                     row.createCell(9).setCellValue(cabinsList.get(k).getFat());
-                    System.out.println(flightList.get(j).getArriveAirportCode() + flightList.get(j).getOriginAirportCode()+cabinsList.get(k).getFat());
                 }
             }
         }
         try{
             FileOutputStream fos = new FileOutputStream(FilePathConstants.excelFilePath);
             workbook.write(fos);
-            log.info("查询返回参数，保存Excel成功");
+            log.info("查询返回参数，保存Excel成功,文件地址为："+FilePathConstants.excelFilePath);
             fos.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -3,7 +3,7 @@ package common;
 public class RequestParam {
 
 
-    public String wxParam(String depCode, String arrCode, String depDate) {
+    public static String wxParam(String depCode, String arrCode, String depDate) {
         String param = "Departure=" + depCode + "&Arrival=" +
                 arrCode + "&DepartureDate=" + depDate +
                 "&userIp=012345&flat=174&ProductType=1&gettype=0&Force=2";
@@ -11,7 +11,7 @@ public class RequestParam {
     }
 
 
-    public String touchParam(String depCode, String arrCode, String depDate) {
+    public static String touchParam(String depCode, String arrCode, String depDate) {
         String param = "Departure=" + depCode + "&Arrival=" +
                 arrCode + "&DepartureDate=" + depDate +
                 "&userIp=123456&flat=&ProductType=0&gettype=0&Force=2";

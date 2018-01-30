@@ -1,4 +1,3 @@
-
 package model.flightresponsemodel;
 
 import java.util.List;

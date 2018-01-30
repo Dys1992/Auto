@@ -1,9 +1,10 @@
 package common;
 
-import common.imp.RequestParamImpl;
 import constants.FilePathConstants;
 import model.flightrequestmodel.FlightInfo;
+import org.apache.log4j.Logger;
 import util.ExcelUtil;
+import util.HttpResquestUtil;
 
 import java.io.*;
 import java.text.ParseException;
@@ -14,19 +15,15 @@ import java.util.Properties;
 public class GetSearchResponse {
     public static final Logger log = Logger.getLogger(GetSearchResponse.class);
 
-    public List<String> getWxResponse(String channel) throws FileNotFoundException {
-
-        RequestParam param = new RequestParamImpl();
-
-        List<FlightInfo> list = new ArrayList<FlightInfo>();
+    public List<String> getResponse(String channel) throws FileNotFoundException {
+        List<FlightInfo> list = ExcelUtil.getExcelData(channel);
         List<String> list1 = new ArrayList<String>();
-        String response = null;
-        list = ExcelUtil.getExcelData();
+        String response ;
+        String params;
+        String departureDate = null;
+
         try {
-
-
             String wxSearchUrl = geturl(channel);
-            String departureDate = null;
             try {
                 departureDate = common.DateUtil.getToday(1);
 
@@ -37,23 +34,17 @@ public class GetSearchResponse {
             for(int i=0;i<list.size();i++){
                 String depCode = list.get(i).getDepCode();
                 String arrCode = list.get(i).getArrCode();
-                String userIp = list.get(i).getUserIp();
-                String flat = list.get(i).getFlat();
-                String productType  = list.get(i).getProductType();
-//                if(channel.equals("wx")){
-//                    param.wxParam(depCode,arrCode,departureDate,userIp,flat,productType);
-//
-//                }else if(channel.equals("touch")){
-//                    param.touchParam(depCode,arrCode,departureDate,userIp,flat,productType)
-//                }else if(channel.equals("app")){
-//                    param.appParam();
-//                }
-                String params = getParam(depCode,arrCode,departureDate,userIp,flat,productType);
+                if (channel.equals("wx")){
+                    params = RequestParam.wxParam(depCode,arrCode,departureDate);
+                    response = HttpResquestUtil.getRequests(wxSearchUrl,params);
+                    list1.add(response);
+                }else {
+                    params = RequestParam.touchParam(depCode,arrCode,departureDate);
+                    response = HttpResquestUtil.getRequests(wxSearchUrl,params);
+                    list1.add(response);
+                }
                 log.info("This is param:"+params);
                 log.info(channel+"渠道查询接口地址:"+wxSearchUrl);
-                response = common.HttpResquestUtil.getRequests(wxSearchUrl,params);
-                list1.add(response);
-
                 log.info(response);
             }
         } catch (IOException e) {
@@ -62,16 +53,6 @@ public class GetSearchResponse {
         }
         return list1;
 
-    }
-
-
-
-    public String getParam(String depCode,String arrCode,String depDate,String userIp,String flat,String productType){
-        String param = "Departure=" + depCode + "&Arrival=" +
-                arrCode + "&DepartureDate=" + depDate +
-                "&userIp="+userIp+"&flat="+flat+"&ProductType="+productType+"&gettype=0&Force=2";
-
-        return param;
     }
 
 

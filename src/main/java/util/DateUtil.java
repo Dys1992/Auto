@@ -87,9 +87,23 @@ public class DateUtil {
 
 
     public static void main(String[] args) throws ParseException {
-        System.out.println(getNoSecondTime());
+
     }
 
 
+    public static boolean compareTime(String time) throws ParseException {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat(noSecondTimeFormat);
+        String nowTime = sdf.format(date);
+        System.out.println(nowTime);
 
+
+            Date dt1 = sdf.parse(time);
+            Date dt2 = sdf.parse(nowTime);
+            if (dt1.getTime()>dt2.getTime()){
+                return true;
+            }else {
+                return false;
+            }
+    }
 }

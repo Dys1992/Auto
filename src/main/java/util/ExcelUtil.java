@@ -15,22 +15,20 @@ import java.util.List;
 
 public class ExcelUtil {
 
-    public static List<FlightInfo> getExcelData() throws FileNotFoundException {
+    public static List<FlightInfo> getExcelData(String channel) throws FileNotFoundException {
         List<FlightInfo> list = new ArrayList<FlightInfo>();
         try {
             InputStream inputStream = new FileInputStream(FilePathConstants.excelFilePath);
             Workbook workbook = Workbook.getWorkbook(inputStream);
-            Sheet sheet = workbook.getSheet("Sheet2");
+            Sheet sheet = workbook.getSheet(channel);
             int rows = sheet.getRows();
-            System.out.println(rows);
+            int colums = sheet.getColumns();
             for (int i = 1; i <rows ; i++){
                 FlightInfo flightInfo =new FlightInfo();
                 flightInfo.setDepCode(sheet.getCell(0,i).getContents());
                 flightInfo.setArrCode(sheet.getCell(1,i).getContents());
-                flightInfo.setUserIp(sheet.getCell(2,i).getContents());
-                flightInfo.setFlat(sheet.getCell(3,i).getContents());
-                flightInfo.setProductType(sheet.getCell(4,i).getContents());
                 list.add(flightInfo);
+                System.out.println(sheet.getCell(0,i).getContents()+" "+sheet.getCell(1,i).getContents());
             }
         } catch (IOException e) {
             e.printStackTrace();
