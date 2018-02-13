@@ -2,6 +2,7 @@ package common;
 
 import constants.FilePathConstants;
 import model.flightrequestmodel.FlightInfo;
+import org.apache.log4j.*;
 import org.testng.annotations.Test;
 import util.ExcelUtil;
 import util.HttpResquestUtil;
@@ -16,6 +17,7 @@ import redis.clients.jedis.*;
  * @author fy39919
  */
 public class SaveSearchResponse {
+    public static  final Logger log = Logger.getLogger(SaveSearchResponse.class);
 
     public void  saveResponse(String channel){
         Jedis jedis = new Jedis("127.0.0.1");
@@ -31,6 +33,7 @@ public class SaveSearchResponse {
                 String param = getParam(channel,dep,arr,departureDate);
                 String response = HttpResquestUtil.getRequests(url,param);
 
+                log.info(url+param);
                 //返回值存入redis,key(航线)value(返回参数)
                 jedis.set(dep+arr,response);
 

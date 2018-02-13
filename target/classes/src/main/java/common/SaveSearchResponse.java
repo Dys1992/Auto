@@ -2,6 +2,7 @@ package common;
 
 import constants.FilePathConstants;
 import model.flightrequestmodel.FlightInfo;
+import org.apache.log4j.*;
 import org.testng.annotations.Test;
 import util.ExcelUtil;
 import util.HttpResquestUtil;
@@ -16,8 +17,9 @@ import redis.clients.jedis.*;
  * @author fy39919
  */
 public class SaveSearchResponse {
+    public static  final Logger log = Logger.getLogger(SaveSearchResponse.class);
 
-    public void  response(String channel){
+    public void  saveResponse(String channel){
         Jedis jedis = new Jedis("127.0.0.1");
         try {
             List<FlightInfo> list = ExcelUtil.getExcelData(channel);
@@ -28,22 +30,20 @@ public class SaveSearchResponse {
                 String arr = list.get(i).getArrCode();
                 String departureDate = common.DateUtil.getToday(0);
                 String url = getUrl(channel);
-                String param = getWxParam(dep,arr,departureDate);
+                String param = getParam(channel,dep,arr,departureDate);
                 String response = HttpResquestUtil.getRequests(url,param);
 
-                //返回值存redis,key(航线)value(返回参数)
+                log.info(url+param);
+                //返回值存入redis,key(航线)value(返回参数)
                 jedis.set(dep+arr,response);
 
             }
-
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
-
     }
 
 
@@ -51,6 +51,7 @@ public class SaveSearchResponse {
      *@Author:fy39919
      *@Date:Created in 10:53 2018/2/8
      **/
+
     public String getUrl(String channel){
         Properties prop = new Properties();
         InputStream in = null;
@@ -74,23 +75,29 @@ public class SaveSearchResponse {
      *@Author:fy39919
      *@Date:Created in 10:53 2018/2/8
      **/
-    public String getWxParam(String depCode, String arrCode, String depDate){
-        String param  = "Departure=" + depCode + "&Arrival=" +
-                arrCode + "&DepartureDate=" + depDate +
-                "&userIp=012345&flat=174&ProductType=1&gettype=0&Force=2";
+
+    public String getParam(String channel,String depCode,String arrCode,String depDate){
+        String param = null;
+        if(channel.equals("wx")){
+            param  = "Departure=" + depCode + "&Arrival=" +
+                    arrCode + "&DepartureDate=" + depDate +
+                    "&userIp=012345&flat=174&ProductType=1&gettype=0&Force=2";
+        }
+        else if(channel.equals("touch")){
+            param = "Departure=" + depCode + "&Arrival=" +
+                    arrCode + "&DepartureDate=" + depDate +
+                    "&userIp=123456&flat=&ProductType=0&gettype=0&Force=2";
+        }
+        else if(channel.equals("app")){
+            param=null;
+        }
+        else if (channel.equals("qq")) {
+            param = null;
+        }
+
+
         return param;
     }
 
 
-    /**
-     *@Author:fy39919
-     *@Date:Created in 10:53 2018/2/8
-     **/
-    public String getTouchParam(String depCode, String arrCode, String depDate){
-        String param = "Departure=" + depCode + "&Arrival=" +
-                arrCode + "&DepartureDate=" + depDate +
-                "&userIp=123456&flat=&ProductType=0&gettype=0&Force=2";
-        return param;
-
-    }
 }

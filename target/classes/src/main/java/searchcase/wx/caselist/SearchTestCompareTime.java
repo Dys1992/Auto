@@ -24,7 +24,7 @@ public class SearchTestCompareTime {
 
         public static final Logger log = Logger.getLogger(SearchTestCompareTime.class);
 
-        public void compareTimeTest(String channel) throws FileNotFoundException, ParseException {
+        public static void compareTimeTest(String channel) throws FileNotFoundException, ParseException {
             Jedis jedis = new Jedis("127.0.0.1");
             List<FlightInfo> list = ExcelUtil.getExcelData(channel);
             log.info(channel+"渠道当前航班起飞时间是否大于当前时间开始测试:"+"\n");
