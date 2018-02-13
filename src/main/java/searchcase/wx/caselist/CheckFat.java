@@ -22,73 +22,76 @@ public class CheckFat {
     public boolean check(String channel) throws FileNotFoundException {
         Jedis jedis = new Jedis("127.0.0.1");
         List<FlightInfo> list = ExcelUtil.getExcelData(channel);
-        Map<String,List<String>> map = new HashMap<>();
+        Map<String, List<Integer>> map = new HashMap<String, List<Integer>>();
 
         for(int i = 0; i < list.size() ; i++){
             List<Integer> fatList = new ArrayList<>();
             String key =channel+list.get(i).getDepCode()+list.get(i).getDepCode();
             String value = jedis.get(key);
+
+            //解析JSON
             WxSreachBean json = JSON.parseObject(value,WxSreachBean.class);
             List<FlightInfoSimpleList> flightInfoSimpleLists = json.getFlightInfoSimpleList();
             List<Cabins> cabinsList = flightInfoSimpleLists.get(i).getCabins();
 
             for(int j = 0; j<cabinsList.size();j++){
-
                 int fat = cabinsList.get(j).getFat();
                 fatList.add(fat);
 
             }
-
-
-
+            map.put(key,fatList);
         }
         return true;
 
     }
 
-    public boolean isFatTrue(String key,List<Integer> list){
+
+
+
+    public boolean isFatTrue(Map<String, List<Integer>> map){
         boolean flag = false;
         boolean flag1,flag21,flag45,flag60;
+        for (Map.Entry<String,List<Integer>> entry: map.entrySet()){
+            if( entry.getValue().contains(1)){
+                flag1 = true;
+            }else {
+                flag1 = false;
+                log.error(entry.getKey()+"1政策缺失,请排查");
+            }
 
 
-        if(list.contains(1)){
-            flag1 = true;
-        }else {
-            flag1 = false;
-            log.error(key+"1政策缺失,请排查");
-        }
+            if( entry.getValue().contains(21)){
+                flag21 = true;
+
+            }else {
+                flag21 = false;
+                log.error(entry.getKey()+"21政策缺失,请排查");
+            }
 
 
-        if(list.contains(21)){
-            flag21 = true;
+            if( entry.getValue().contains(45)){
+                flag45 = true;
 
-        }else {
-            flag21 = false;
-            log.error(key+"21政策缺失,请排查");
-        }
-
-
-        if(list.contains(45)){
-            flag45 = true;
-
-        }else {
-            flag45 = false;
-            log.error(key+"45政策缺失,请排查");
-        }
+            }else {
+                flag45 = false;
+                log.error(entry.getKey()+"45政策缺失,请排查");
+            }
 
 
-        if(list.contains(60)){
-            flag60 = true;
+            if( entry.getValue().contains(60)){
+                flag60 = true;
 
-        }else{
-            flag60 = false;
-            log.error(key+"60政策缺失,请排查");
-        }
+            }else{
+                flag60 = false;
+                log.error(entry.getKey()+"60政策缺失,请排查");
+            }
 
-        if(flag1 == true && flag21 == true && flag45 == true && flag60==true){
-            flag = true;
-        }else{
-            flag = false;
+
+            if(flag1 == true && flag21 == true && flag45 == true && flag60==true){
+                flag = true;
+            }else{
+                flag = false;
+            }
         }
 
         return flag;

@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc4334e3-b1c0-4ab8-9b90-0460675a373f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/CheckFat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/common/SaveSearchResponse.class" afterPath="$PROJECT_DIR$/target/classes/common/SaveSearchResponse.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/searchcase/wx/caselist/SearchTestCompareTime.class" afterPath="$PROJECT_DIR$/target/classes/searchcase/wx/caselist/SearchTestCompareTime.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/searchcase/wx/caselist/WxBaseTest.class" afterPath="$PROJECT_DIR$/target/classes/searchcase/wx/caselist/WxBaseTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/target/classes/common/SaveSearchResponse.class" afterPath="$PROJECT_DIR$/target/classes/target/classes/common/SaveSearchResponse.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/target/classes/searchcase/wx/caselist/SearchTestCompareTime.class" afterPath="$PROJECT_DIR$/target/classes/target/classes/searchcase/wx/caselist/SearchTestCompareTime.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/target/classes/searchcase/wx/caselist/WxBaseTest.class" afterPath="$PROJECT_DIR$/target/classes/target/classes/searchcase/wx/caselist/WxBaseTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/target/test-classes/TestSaveData.class" afterPath="$PROJECT_DIR$/target/classes/target/test-classes/TestSaveData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/TestSaveData.class" afterPath="$PROJECT_DIR$/target/test-classes/TestSaveData.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/common/SaveSearchResponse.java" afterPath="$PROJECT_DIR$/src/main/java/common/SaveSearchResponse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/SearchTestCompareTime.java" afterPath="$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/SearchTestCompareTime.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/WxBaseTest.java" afterPath="$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/WxBaseTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/TestSaveData.java" afterPath="$PROJECT_DIR$/src/test/java/TestSaveData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/src/main/java/common/SaveSearchResponse.java" afterPath="$PROJECT_DIR$/target/classes/src/main/java/common/SaveSearchResponse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/src/main/java/searchcase/wx/caselist/SearchTestCompareTime.java" afterPath="$PROJECT_DIR$/target/classes/src/main/java/searchcase/wx/caselist/SearchTestCompareTime.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/src/main/java/searchcase/wx/caselist/WxBaseTest.java" afterPath="$PROJECT_DIR$/target/classes/src/main/java/searchcase/wx/caselist/WxBaseTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/src/test/java/TestSaveData.java" afterPath="$PROJECT_DIR$/target/classes/src/test/java/TestSaveData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/CheckFat.java" afterPath="$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/CheckFat.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -78,10 +62,11 @@
       <file leaf-file-name="CheckFat.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/CheckFat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.8329177">
-              <caret line="54" column="25" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.5885287">
+              <caret line="52" column="43" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#814#837#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1312,7 +1297,7 @@
       <workItem from="1517192310052" duration="13173000" />
       <workItem from="1517275997188" duration="15470000" />
       <workItem from="1517314423985" duration="118000" />
-      <workItem from="1518430083518" duration="9225000" />
+      <workItem from="1518430083518" duration="9909000" />
     </task>
     <servers />
   </component>
@@ -1349,11 +1334,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99214000" />
+    <option name="totallyTimeSpent" value="99898000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1276" height="777" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1365,7 +1350,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3940678" sideWeight="0.4968652" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26802507" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26802507" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32802126" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1432,14 +1417,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/common/SaveResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/flightresponsemodel/Cabins.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3586,16 +3563,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/IsFat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="24" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/flightresponsemodel/Cabins.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.93516207">
@@ -3634,12 +3601,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/CheckFat.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/jre/lib/rt.jar!/java/util/Map.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.8329177">
-          <caret line="54" column="25" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/IsFat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="24" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/CheckFat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5885287">
+          <caret line="52" column="43" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#814#837#0" expanded="true" />
           </folding>
         </state>
       </provider>
