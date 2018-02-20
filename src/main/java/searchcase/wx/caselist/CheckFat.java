@@ -1,6 +1,7 @@
 package searchcase.wx.caselist;
 
 import com.alibaba.fastjson.JSON;
+import constants.FilePathConstants;
 import model.flightrequestmodel.FlightInfo;
 import model.flightresponsemodel.Cabins;
 import model.flightresponsemodel.FlightInfoSimpleList;
@@ -18,10 +19,14 @@ import java.util.Map;
 
 
 public class CheckFat {
+
     public static final Logger log = Logger.getLogger(CheckFat.class);
-    public static boolean check(String channel) throws FileNotFoundException {
+    public static Jedis jedis = new Jedis(FilePathConstants.redisAddress);
+
+
+    public static boolean checkFat(String channel) throws FileNotFoundException {
         boolean flag=false;
-        Jedis jedis = new Jedis("127.0.0.1");
+
         List<FlightInfo> list = ExcelUtil.getExcelData(channel);
         Map<String, List<Integer>> map = new HashMap<String, List<Integer>>();
 
@@ -103,5 +108,55 @@ public class CheckFat {
         }
 
         return flag;
+    }
+
+
+
+
+
+    public static boolean checkFat1(String key){
+        String value =  jedis.get(key);
+
+        WxSreachBean json = JSON.parseObject(value,WxSreachBean.class);
+
+
+
+        List<FlightInfoSimpleList>  flightInfoList =  new ArrayList<>();
+        flightInfoList = json.getFlightInfoSimpleList();
+
+        for(int i = 0; i< flightInfoList.size() ; i++){
+
+
+            List<Cabins> cabinList = new ArrayList<>();
+            cabinList = flightInfoList.get(i).getCabins();
+
+
+            for(int j = 0; j < cabinList.size(); j++){
+
+                int fat = cabinList.get(j).getFat();
+
+
+                if(fat == 1){
+
+                }
+
+                if(fat == 31){
+
+                }
+
+                if(fat == 45){
+
+                }
+                if(fat == 60){
+
+                }
+
+            }
+
+
+        }
+
+
+        return true;
     }
 }

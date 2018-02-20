@@ -1,7 +1,8 @@
 package searchcase.wx.caselist;
 
 import com.alibaba.fastjson.JSON;
-import common.DateUtil;
+import constants.FilePathConstants;
+import util.DateUtil;
 import model.flightrequestmodel.FlightInfo;
 import model.flightresponsemodel.FlightInfoSimpleList;
 import model.flightresponsemodel.WxSreachBean;
@@ -23,9 +24,10 @@ import java.util.List;
 public class SearchTestCompareTime {
 
         public static final Logger log = Logger.getLogger(SearchTestCompareTime.class);
+        public static Jedis jedis = new Jedis(FilePathConstants.redisAddress);
 
         public static void compareTimeTest(String channel) throws FileNotFoundException, ParseException {
-            Jedis jedis = new Jedis("127.0.0.1");
+
             List<FlightInfo> list = ExcelUtil.getExcelData(channel);
             log.info(channel+"渠道当前航班起飞时间是否大于当前时间开始测试:"+"\n");
 
@@ -39,7 +41,7 @@ public class SearchTestCompareTime {
         }
 
         public static boolean compareTime(String key) throws  ParseException {
-            Jedis jedis = new Jedis("127.0.0.1");
+
             List<String> list = new ArrayList<String>();
             String value = jedis.get(key);
 

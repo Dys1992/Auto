@@ -69,7 +69,7 @@ public class DateUtil {
      * 2018-01-25格式日期
      */
     public static String getToday(int addDay) throws ParseException {
-        DateFormat dateFormat = new SimpleDateFormat(webFormat);
+        DateFormat dateFormat = getNewDateFormat(webFormat);
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DAY_OF_MONTH,addDay);
         return dateFormat.format(calendar.getTime());
@@ -79,10 +79,9 @@ public class DateUtil {
             *HH:mm格式时间
          **/
     public static String getNoSecondTime(){
-        DateFormat dateFormat = new SimpleDateFormat(noSecondTimeFormat);
-        Calendar calendar = Calendar.getInstance();
-
-        return  dateFormat.format(calendar.getTime());
+        DateFormat dateFormat = getNewDateFormat(noSecondTimeFormat);
+        Date date = new Date();
+        return  dateFormat.format(date);
     }
 
 

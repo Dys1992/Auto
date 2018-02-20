@@ -3,15 +3,17 @@ package common;
 import constants.FilePathConstants;
 import model.flightrequestmodel.FlightInfo;
 import org.apache.log4j.*;
+import org.apache.poi.ss.usermodel.DateUtil;
 import org.testng.annotations.Test;
 import util.ExcelUtil;
 import util.HttpResquestUtil;
-
 import java.io.*;
-import java.text.ParseException;
 import java.util.List;
 import java.util.Properties;
 import redis.clients.jedis.*;
+
+import static util.DateUtil.getToday;
+
 
 /**
  * @author fy39919
@@ -20,7 +22,7 @@ public class SaveSearchResponse {
     public static  final Logger log = Logger.getLogger(SaveSearchResponse.class);
 
     public void  saveResponse(String channel){
-        Jedis jedis = new Jedis("127.0.0.1");
+        Jedis jedis = new Jedis(FilePathConstants.redisAddress);
         try {
             List<FlightInfo> list = ExcelUtil.getExcelData(channel);
 
@@ -28,7 +30,7 @@ public class SaveSearchResponse {
 
                 String dep = list.get(i).getDepCode();
                 String arr = list.get(i).getArrCode();
-                String departureDate = common.DateUtil.getToday(0);
+                String departureDate = getToday(0);
                 String url = getUrl(channel);
                 String param = getParam(channel,dep,arr,departureDate);
                 String response = HttpResquestUtil.getRequests(url,param);
@@ -40,8 +42,6 @@ public class SaveSearchResponse {
             }
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
             e.printStackTrace();
         }
     }

@@ -1,4 +1,4 @@
-package common;
+package util;
 
 import org.apache.log4j.Logger;
 
@@ -68,21 +68,22 @@ public class DateUtil {
      *@return
      * 2018-01-25格式日期
      */
-    public static String getToday(int addDay) throws ParseException {
-        DateFormat dateFormat = new SimpleDateFormat(webFormat);
+    public static String getToday(int addDay) {
+        DateFormat dateFormat = getNewDateFormat(webFormat);
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DAY_OF_MONTH,addDay);
         return dateFormat.format(calendar.getTime());
     }
 
-        /**
-            *HH:mm格式时间
-         **/
+    /**
+     *当前日期
+     *@return
+     *HH:mm格式时间
+     **/
     public static String getNoSecondTime(){
-        DateFormat dateFormat = new SimpleDateFormat(noSecondTimeFormat);
-        Calendar calendar = Calendar.getInstance();
-
-        return  dateFormat.format(calendar.getTime());
+        DateFormat dateFormat = getNewDateFormat(noSecondTimeFormat);
+        Date date = new Date();
+        return  dateFormat.format(date);
     }
 
 
@@ -95,7 +96,7 @@ public class DateUtil {
 
     public static boolean compareTime(String time) throws ParseException {
         Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat(noSecondTimeFormat);
+        DateFormat sdf = getNewDateFormat(noSecondTimeFormat);
         String nowTime = sdf.format(date);
         System.out.println(nowTime);
 
