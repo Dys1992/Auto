@@ -2,30 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc4334e3-b1c0-4ab8-9b90-0460675a373f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/common/GetSearchResponse.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/common/RequestParam.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/common/SaveResponse.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/ResponseExcel.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/WxFlightSearchResponse.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/searchcase/wx/caselist/WxFlightSearchResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/src/main/java/searchcase/wx/caselist/WxFlightSearchResponse.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/target/classes/searchcase/wx/caselist/WxFlightSearchResponse.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/common/DateUtil.class" afterPath="$PROJECT_DIR$/target/classes/common/DateUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/searchcase/wx/caselist/CheckFat.class" afterPath="$PROJECT_DIR$/target/classes/searchcase/wx/caselist/CheckFat.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/target/classes/common/DateUtil.class" afterPath="$PROJECT_DIR$/target/classes/target/classes/common/DateUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/target/classes/searchcase/wx/caselist/CheckFat.class" afterPath="$PROJECT_DIR$/target/classes/target/classes/searchcase/wx/caselist/CheckFat.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/target/test-classes/TestSaveData.class" afterPath="$PROJECT_DIR$/target/classes/target/test-classes/TestSaveData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/TestSaveData.class" afterPath="$PROJECT_DIR$/target/test-classes/TestSaveData.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/common/SaveSearchResponse.java" afterPath="$PROJECT_DIR$/src/main/java/common/SaveSearchResponse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/constants/FilePathConstants.java" afterPath="$PROJECT_DIR$/src/main/java/constants/FilePathConstants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/CheckFat.java" afterPath="$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/CheckFat.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/SearchTestCompareTime.java" afterPath="$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/SearchTestCompareTime.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/util/DateUtil.java" afterPath="$PROJECT_DIR$/src/main/java/util/DateUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/TestSaveData.java" afterPath="$PROJECT_DIR$/src/test/java/TestSaveData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/src/main/java/searchcase/wx/caselist/CheckFat.java" afterPath="$PROJECT_DIR$/target/classes/src/main/java/searchcase/wx/caselist/CheckFat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/src/main/java/util/DateUtil.java" afterPath="$PROJECT_DIR$/target/classes/src/main/java/util/DateUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/src/test/java/TestSaveData.java" afterPath="$PROJECT_DIR$/target/classes/src/test/java/TestSaveData.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -63,9 +41,11 @@
       <file leaf-file-name="SearchTestCompareTime.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/SearchTestCompareTime.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32544377">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.5029586">
+              <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1303,7 +1283,7 @@
       <workItem from="1517192310052" duration="13173000" />
       <workItem from="1517275997188" duration="15470000" />
       <workItem from="1517314423985" duration="118000" />
-      <workItem from="1518430083518" duration="14380000" />
+      <workItem from="1518430083518" duration="14427000" />
     </task>
     <servers />
   </component>
@@ -1340,7 +1320,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104369000" />
+    <option name="totallyTimeSpent" value="104416000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1276" height="777" extended-state="0" />
@@ -3360,9 +3340,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/searchcase/wx/caselist/SearchTestCompareTime.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32544377">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.5029586">
+          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
