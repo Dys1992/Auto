@@ -2,16 +2,12 @@ package common;
 
 import constants.FilePathConstants;
 import model.flightrequestmodel.FlightInfo;
-import org.apache.log4j.*;
-import org.apache.poi.ss.usermodel.DateUtil;
-import org.testng.annotations.Test;
 import util.ExcelUtil;
 import util.HttpResquestUtil;
 import java.io.*;
 import java.util.List;
 import java.util.Properties;
 import redis.clients.jedis.*;
-
 import static util.DateUtil.getToday;
 
 

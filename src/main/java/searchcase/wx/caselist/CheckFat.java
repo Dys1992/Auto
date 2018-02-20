@@ -9,7 +9,6 @@ import model.flightresponsemodel.WxSreachBean;
 import org.apache.log4j.Logger;
 import redis.clients.jedis.Jedis;
 import util.ExcelUtil;
-
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
