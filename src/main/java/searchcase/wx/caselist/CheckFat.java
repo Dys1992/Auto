@@ -19,15 +19,15 @@ import java.util.Map;
 
 public class CheckFat {
 
-    public static final Logger log = Logger.getLogger(CheckFat.class);
-    public static Jedis jedis = new Jedis(FilePathConstants.redisAddress);
+    private static final Logger log = Logger.getLogger(CheckFat.class);
+    private static Jedis jedis = new Jedis(FilePathConstants.redisAddress);
 
 
     public static boolean checkFat(String channel) throws FileNotFoundException {
         boolean flag=false;
 
         List<FlightInfo> list = ExcelUtil.getExcelData(channel);
-        Map<String, List<Integer>> map = new HashMap<String, List<Integer>>();
+        Map<String, List<Integer>> map = new HashMap<>();
 
         for(int i = 0; i < list.size() ; i++){
             List<Integer> fatList = new ArrayList<>();
@@ -37,11 +37,11 @@ public class CheckFat {
             //解析JSON
             WxSreachBean json = JSON.parseObject(value,WxSreachBean.class);
             List<FlightInfoSimpleList> flightInfoSimpleLists =  json.getFlightInfoSimpleList();
-            List<Cabins> cabinsList = new ArrayList<>();
+            List<Cabins> cabinsList;
             cabinsList                 =        flightInfoSimpleLists.get(i).getCabins();
 
-            for(int j = 0; j<cabinsList.size();j++){
-                int fat = cabinsList.get(j).getFat();
+            for (Cabins aCabinsList : cabinsList) {
+                int fat = aCabinsList.getFat();
 
                 log.info(fat);
                 fatList.add(fat);
@@ -60,7 +60,7 @@ public class CheckFat {
 
 
 
-    public static boolean isFatTrue(Map<String, List<Integer>> map){
+    private static boolean isFatTrue(Map<String, List<Integer>> map){
         boolean flag = false;
         boolean flag1,flag21,flag45,flag60;
         for (Map.Entry<String,List<Integer>> entry: map.entrySet()){
@@ -99,11 +99,7 @@ public class CheckFat {
             }
 
 
-            if(flag1 == true && flag21 == true && flag45 == true && flag60==true){
-                flag = true;
-            }else{
-                flag = false;
-            }
+            flag = flag1 == true && flag21 == true && flag45 == true && flag60 == true;
         }
 
         return flag;
@@ -113,40 +109,33 @@ public class CheckFat {
 
 
 
-    public static boolean checkFat1(String key){
+    private static boolean checkFat1(String key){
         String value =  jedis.get(key);
 
+        //FastJson解析
         WxSreachBean json = JSON.parseObject(value,WxSreachBean.class);
 
-
-
-        List<FlightInfoSimpleList>  flightInfoList =  new ArrayList<>();
+        //获取FlightSimple,航班信息
+        List<FlightInfoSimpleList>  flightInfoList;
         flightInfoList = json.getFlightInfoSimpleList();
 
-        for(int i = 0; i< flightInfoList.size() ; i++){
+        for (FlightInfoSimpleList aFlightInfoList : flightInfoList) {
+            //获取舱位信息
+            List<Cabins> cabinList;
+            cabinList = aFlightInfoList.getCabins();
+            for (Cabins aCabinList : cabinList) {
+                int fat = aCabinList.getFat();
+                if (fat == 1) {
+                }
 
-
-            List<Cabins> cabinList = new ArrayList<>();
-            cabinList = flightInfoList.get(i).getCabins();
-
-
-            for(int j = 0; j < cabinList.size(); j++){
-
-                int fat = cabinList.get(j).getFat();
-
-
-                if(fat == 1){
+                if (fat == 31) {
 
                 }
 
-                if(fat == 31){
+                if (fat == 45) {
 
                 }
-
-                if(fat == 45){
-
-                }
-                if(fat == 60){
+                if (fat == 60) {
 
                 }
 
