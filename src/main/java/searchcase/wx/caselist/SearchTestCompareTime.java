@@ -2,23 +2,23 @@ package searchcase.wx.caselist;
 
 import com.alibaba.fastjson.JSON;
 import constants.FilePathConstants;
-import util.DateUtil;
 import model.flightrequestmodel.FlightInfo;
 import model.flightresponsemodel.FlightInfoSimpleList;
 import model.flightresponsemodel.WxSreachBean;
 import org.apache.log4j.Logger;
+import redis.clients.jedis.Jedis;
+import util.DateUtil;
 import util.ExcelUtil;
+
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import redis.clients.jedis.*;
 
 /**
  * @author fy39919
  */
-
 
 public class SearchTestCompareTime {
 
@@ -34,7 +34,7 @@ public class SearchTestCompareTime {
                 String key = channel + aList.getDepCode() + aList.getArrCode();
                 boolean isAfter = compareTime(key);
                 log.info(aList.getDepCode() + aList.getArrCode() + "起飞时间是否大于当前时间" + isAfter);
-                assert isAfter == true;
+                assert isAfter;
             }
 
         }
