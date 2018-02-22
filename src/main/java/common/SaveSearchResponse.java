@@ -2,12 +2,15 @@ package common;
 
 import constants.FilePathConstants;
 import model.flightrequestmodel.FlightInfo;
+import org.apache.log4j.Logger;
+import redis.clients.jedis.Jedis;
 import util.ExcelUtil;
 import util.HttpResquestUtil;
+
 import java.io.*;
 import java.util.List;
 import java.util.Properties;
-import redis.clients.jedis.*;
+
 import static util.DateUtil.getToday;
 
 
@@ -15,25 +18,23 @@ import static util.DateUtil.getToday;
  * @author fy39919
  */
 public class SaveSearchResponse {
-    public static  final Logger log = Logger.getLogger(SaveSearchResponse.class);
+    private static  final Logger log = Logger.getLogger(SaveSearchResponse.class);
 
     public void  saveResponse(String channel){
         Jedis jedis = new Jedis(FilePathConstants.redisAddress);
         try {
             List<FlightInfo> list = ExcelUtil.getExcelData(channel);
-
-            for (int i = 0; i< list.size();i++){
-
-                String dep = list.get(i).getDepCode();
-                String arr = list.get(i).getArrCode();
+            for (FlightInfo aList : list) {
+                String dep = aList.getDepCode();
+                String arr = aList.getArrCode();
                 String departureDate = getToday(0);
                 String url = getUrl(channel);
-                String param = getParam(channel,dep,arr,departureDate);
-                String response = HttpResquestUtil.getRequests(url,param);
+                String param = getParam(channel, dep, arr, departureDate);
+                String response = HttpResquestUtil.getRequests(url, param);
 
-                log.info(url+param);
+                log.info(channel+"测试链接:"+url + param);
                 //返回值存入redis,key(航线)value(返回参数)
-                jedis.set(dep+arr,response);
+                jedis.set(channel+dep + arr, response);
 
             }
 
@@ -43,12 +44,7 @@ public class SaveSearchResponse {
     }
 
 
-    /**
-     *@Author:fy39919
-     *@Date:Created in 10:53 2018/2/8
-     **/
-
-    public String getUrl(String channel){
+    private String getUrl(String channel){
         Properties prop = new Properties();
         InputStream in = null;
         File file = new File(FilePathConstants.urlFilePath);
@@ -62,33 +58,26 @@ public class SaveSearchResponse {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String url = prop.getProperty(channel).trim();
-        return url;
+        return prop.getProperty(channel).trim();
     }
 
 
-    /**
-     *@Author:fy39919
-     *@Date:Created in 10:53 2018/2/8
-     **/
 
-    public String getParam(String channel,String depCode,String arrCode,String depDate){
+    private String getParam(String channel, String depCode, String arrCode, String depDate){
         String param = null;
-        if(channel.equals("wx")){
-            param  = "Departure=" + depCode + "&Arrival=" +
-                    arrCode + "&DepartureDate=" + depDate +
-                    "&userIp=012345&flat=174&ProductType=1&gettype=0&Force=2";
-        }
-        else if(channel.equals("touch")){
-            param = "Departure=" + depCode + "&Arrival=" +
-                    arrCode + "&DepartureDate=" + depDate +
-                    "&userIp=123456&flat=&ProductType=0&gettype=0&Force=2";
-        }
-        else if(channel.equals("app")){
-            param=null;
-        }
-        else if (channel.equals("qq")) {
-            param = null;
+        switch (channel) {
+            case "wx":
+                param = String.format("Departure=%s&Arrival=%s&DepartureDate=%s&userIp=012345&flat=174&ProductType=1&gettype=0&Force=2", depCode, arrCode, depDate);
+                break;
+            case "touch":
+                param = String.format("Departure=%s&Arrival=%s&DepartureDate=%s&&userIp=123456&flat=&ProductType=0&gettype=0&Force=2", depCode, arrCode, depDate);
+                break;
+            case "app":
+                param = null;
+                break;
+            case "qq":
+                param = null;
+                break;
         }
 
 
