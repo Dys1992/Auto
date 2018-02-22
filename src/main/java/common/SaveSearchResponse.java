@@ -27,7 +27,7 @@ public class SaveSearchResponse {
             for (FlightInfo aList : list) {
                 String dep = aList.getDepCode();
                 String arr = aList.getArrCode();
-                String departureDate = getToday(0);
+                String departureDate = getToday(FilePathConstants.flyOffTime);
                 String url = getUrl(channel);
                 String param = getParam(channel, dep, arr, departureDate);
                 String response = HttpResquestUtil.getRequests(url, param);
