@@ -1,14 +1,13 @@
 package searchcase.wx.caselist;
 
 import com.alibaba.fastjson.JSON;
-import constants.FilePathConstants;
 import model.flightrequestmodel.FlightInfo;
 import model.flightresponsemodel.FlightInfoSimpleList;
 import model.flightresponsemodel.WxSreachBean;
 import org.apache.log4j.Logger;
-import redis.clients.jedis.Jedis;
 import util.DateUtil;
 import util.ExcelUtil;
+import util.RedisUtil;
 
 import java.io.FileNotFoundException;
 import java.text.ParseException;
@@ -23,7 +22,6 @@ import java.util.List;
 public class SearchTestCompareTime {
 
         private static final Logger log = Logger.getLogger(SearchTestCompareTime.class);
-        private static Jedis jedis = new Jedis(FilePathConstants.redisAddress);
 
         public static void compareTimeTest(String channel) throws FileNotFoundException, ParseException {
 
@@ -39,23 +37,26 @@ public class SearchTestCompareTime {
 
         }
 
-        private static boolean compareTime(String key) throws  ParseException {
-
+        private static boolean compareTime(String key) throws ParseException {
             List<String> list = new ArrayList<>();
-            String value = jedis.get(key);
+            try{
+                String value = RedisUtil.getJedis().get(key);
 
-            log.info("Key的值为："+key);
-            log.info("Value的值为："+value);
+                log.info("Key的值为："+key);
+                log.info("Value的值为："+value);
 
-            WxSreachBean jsonObject = JSON.parseObject(value, WxSreachBean.class);
-            List<FlightInfoSimpleList> flightinfolist = jsonObject.getFlightInfoSimpleList();
+                WxSreachBean jsonObject = JSON.parseObject(value, WxSreachBean.class);
+                List<FlightInfoSimpleList> flightinfolist = jsonObject.getFlightInfoSimpleList();
 
-            for (FlightInfoSimpleList aFlightinfolist : flightinfolist) {
-                list.add(aFlightinfolist.getFlyOffOnlyTime());
+                for (FlightInfoSimpleList aFlightinfolist : flightinfolist) {
+                    list.add(aFlightinfolist.getFlyOffOnlyTime());
+                }
+                Collections.sort(list);
+
+            }finally {
+                RedisUtil.getJedis().close();
             }
-            Collections.sort(list);
             return  DateUtil.compareTime(list.get(0));
-
         }
 
 

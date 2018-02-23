@@ -1,14 +1,14 @@
 package searchcase.wx.caselist;
 
 import com.alibaba.fastjson.JSON;
-import constants.FilePathConstants;
 import model.flightrequestmodel.FlightInfo;
 import model.flightresponsemodel.Cabins;
 import model.flightresponsemodel.FlightInfoSimpleList;
 import model.flightresponsemodel.WxSreachBean;
 import org.apache.log4j.Logger;
-import redis.clients.jedis.Jedis;
 import util.ExcelUtil;
+import util.RedisUtil;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,41 +17,48 @@ import java.util.Map;
 
 
 
+/**
+ * @author fy39919
+ */
 public class CheckFat {
 
     private static final Logger log = Logger.getLogger(CheckFat.class);
-    private static Jedis jedis = new Jedis(FilePathConstants.redisAddress);
-
-
     public static boolean checkFat(String channel) throws FileNotFoundException {
         boolean flag=false;
 
         List<FlightInfo> list = ExcelUtil.getExcelData(channel);
         Map<String, List<Integer>> map = new HashMap<>();
+        String value = null;
+        try{
+            for(int i = 0; i < list.size() ; i++){
+                List<Integer> fatList = new ArrayList<>();
+                String key =channel+list.get(i).getDepCode()+list.get(i).getDepCode();
+                if(key != null){
+                    value = RedisUtil.getJedis().get(key);
+                }else{
+                    log.error("获取redis key失败");
+                }
 
-        for(int i = 0; i < list.size() ; i++){
-            List<Integer> fatList = new ArrayList<>();
-            String key =channel+list.get(i).getDepCode()+list.get(i).getDepCode();
-            String value = jedis.get(key);
 
-            //解析JSON
-            WxSreachBean json = JSON.parseObject(value,WxSreachBean.class);
-            List<FlightInfoSimpleList> flightInfoSimpleLists =  json.getFlightInfoSimpleList();
-            List<Cabins> cabinsList;
-            cabinsList                 =        flightInfoSimpleLists.get(i).getCabins();
+                //解析JSON
+                WxSreachBean json = JSON.parseObject(value,WxSreachBean.class);
+                List<FlightInfoSimpleList> flightInfoSimpleLists =  json.getFlightInfoSimpleList();
+                List<Cabins> cabinsList;
+                cabinsList                 =        flightInfoSimpleLists.get(i).getCabins();
 
-            for (Cabins aCabinsList : cabinsList) {
-                int fat = aCabinsList.getFat();
+                for (Cabins aCabinsList : cabinsList) {
+                    int fat = aCabinsList.getFat();
 
-                log.info(fat);
-                fatList.add(fat);
+                    log.info(fat);
+                    fatList.add(fat);
+
+                }
+                map.put(key,fatList);
 
             }
-            map.put(key,fatList);
-
+        }finally {
+            RedisUtil.getJedis().close();
         }
-
-
 
         return isFatTrue(map);
 
@@ -110,7 +117,7 @@ public class CheckFat {
 
 
     private static boolean checkFat1(String key){
-        String value =  jedis.get(key);
+        String value =  RedisUtil.getJedis().get(key);
 
         //FastJson解析
         WxSreachBean json = JSON.parseObject(value,WxSreachBean.class);

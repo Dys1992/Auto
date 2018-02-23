@@ -1,11 +1,11 @@
 package util;
 
 import constants.FilePathConstants;
-import jxl.Sheet;
-import jxl.Workbook;
-import jxl.read.biff.BiffException;
 import model.flightrequestmodel.FlightInfo;
 import org.apache.log4j.Logger;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,29 +16,31 @@ import java.util.List;
 
 
 public class ExcelUtil {
-    public static final Logger log = Logger.getLogger(ExcelUtil.class);
+    private static final Logger log = Logger.getLogger(ExcelUtil.class);
 
     public static List<FlightInfo> getExcelData(String channel) throws FileNotFoundException {
-        List<FlightInfo> keyList = new ArrayList<FlightInfo>();
+        List<FlightInfo> keyList = new ArrayList<>();
         try {
             InputStream inputStream = new FileInputStream(FilePathConstants.excelFilePath);
-            Workbook workbook = Workbook.getWorkbook(inputStream);
-            Sheet sheet = workbook.getSheet(channel);
-            int rows = sheet.getRows();
-            int colums = sheet.getColumns();
-            for (int i = 1; i <rows ; i++){
-                FlightInfo flightInfo =new FlightInfo();
-                flightInfo.setDepCode(sheet.getCell(0,i).getContents());
-                flightInfo.setArrCode(sheet.getCell(1,i).getContents());
-                keyList.add(flightInfo);
-                log.debug("起抵机场:"+sheet.getCell(0,i).getContents()+" "+sheet.getCell(1,i).getContents());
+            HSSFWorkbook wb = new HSSFWorkbook(inputStream);
+            HSSFSheet sheet = wb.getSheet(channel);
+            int rows = sheet.getLastRowNum();
+
+            for (int i = 1; i < sheet.getLastRowNum() + 1 ; i++){
+                HSSFRow row = sheet.getRow(i);
+                if (row != null ){
+                    FlightInfo flightInfo =new FlightInfo();
+                    String dep = row.getCell(0).toString() ;
+                    flightInfo.setDepCode(dep);
+                    String arr = row.getCell(1).toString() ;
+                    flightInfo.setArrCode(arr);
+                    keyList.add(flightInfo);
+                    log.info("测试航线" +i+":"+dep+"-"+arr);
+                }
             }
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (BiffException e) {
             e.printStackTrace();
         }
         return keyList;
     }
-
 }
