@@ -6,7 +6,7 @@ public class TestLog {
 //        Jedis jedis = new Jedis("127.0.0.1");
 //        System.out.println(jedis.get("wxSHAPEK"));
 
-        System.out.println(RedisUtil.getJedis().get("wxSHAPEK"));
+        System.out.println(RedisUtil.getJedis().ttl("wxSHAPEK"));
 
 
 //        SaveSearchResponse saveSearchResponse = new SaveSearchResponse();
