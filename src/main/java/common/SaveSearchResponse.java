@@ -3,6 +3,7 @@ package common;
 import constants.FilePathConstants;
 import model.flightrequestmodel.FlightInfo;
 import org.apache.log4j.Logger;
+import redis.clients.jedis.Jedis;
 import util.ExcelUtil;
 import util.HttpResquestUtil;
 import util.RedisUtil;
@@ -21,7 +22,7 @@ public class SaveSearchResponse {
     private static  final Logger log = Logger.getLogger(SaveSearchResponse.class);
 
     public void  saveResponse(String channel){
-
+        Jedis jedis = RedisUtil.getJedis();
         try {
             List<FlightInfo> list = ExcelUtil.getExcelData(channel);
             for (FlightInfo aList : list) {
@@ -34,7 +35,9 @@ public class SaveSearchResponse {
 
                 log.info(channel+"测试链接:"+url + param);
                 //返回值存入redis,key(航线)value(返回参数)
-                RedisUtil.getJedis().set(channel+dep + arr, response);
+
+                jedis.set(channel+dep + arr, response);
+                jedis.expire(channel+dep + arr,86400);
 
             }
 
