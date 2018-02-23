@@ -3,9 +3,9 @@ package common;
 import constants.FilePathConstants;
 import model.flightrequestmodel.FlightInfo;
 import org.apache.log4j.Logger;
-import redis.clients.jedis.Jedis;
 import util.ExcelUtil;
 import util.HttpResquestUtil;
+import util.RedisUtil;
 
 import java.io.*;
 import java.util.List;
@@ -21,7 +21,7 @@ public class SaveSearchResponse {
     private static  final Logger log = Logger.getLogger(SaveSearchResponse.class);
 
     public void  saveResponse(String channel){
-        Jedis jedis = new Jedis(FilePathConstants.redisAddress);
+
         try {
             List<FlightInfo> list = ExcelUtil.getExcelData(channel);
             for (FlightInfo aList : list) {
@@ -34,12 +34,14 @@ public class SaveSearchResponse {
 
                 log.info(channel+"测试链接:"+url + param);
                 //返回值存入redis,key(航线)value(返回参数)
-                jedis.set(channel+dep + arr, response);
+                RedisUtil.getJedis().set(channel+dep + arr, response);
 
             }
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        }finally {
+            RedisUtil.getJedis().close();
         }
     }
 
