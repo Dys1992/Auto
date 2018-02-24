@@ -24,7 +24,9 @@ public class ExcelUtil {
             InputStream inputStream = new FileInputStream(FilePathConstants.excelFilePath);
             HSSFWorkbook wb = new HSSFWorkbook(inputStream);
             HSSFSheet sheet = wb.getSheet(channel);
+            HSSFRow hssfRow=sheet.getRow(1);
             int rows = sheet.getLastRowNum();
+            int col = hssfRow.getPhysicalNumberOfCells();
 
             for (int i = 1; i < sheet.getLastRowNum() + 1 ; i++){
                 HSSFRow row = sheet.getRow(i);
