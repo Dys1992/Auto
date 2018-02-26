@@ -5,7 +5,7 @@ import model.flightrequestmodel.FlightInfo;
 import org.apache.log4j.Logger;
 import redis.clients.jedis.Jedis;
 import util.ExcelUtil;
-import util.HttpResquestUtil;
+import util.HttpUtils;
 import util.RedisUtil;
 
 import java.io.*;
@@ -28,10 +28,10 @@ public class SaveSearchResponse {
             for (FlightInfo aList : list) {
                 String dep = aList.getDepCode();
                 String arr = aList.getArrCode();
-                String departureDate = getToday(FilePathConstants.flyOffTime);
+                String departureDate = getToday(FilePathConstants.FlyOffTime);
                 String url = getUrl(channel);
                 String param = getParam(channel, dep, arr, departureDate);
-                String response = HttpResquestUtil.getRequests(url, param);
+                String response = HttpUtils.senGet(url, param);
 
                 log.info(channel+"测试链接:"+url + param);
                 //返回值存入redis,key(航线)value(返回参数)
@@ -52,7 +52,7 @@ public class SaveSearchResponse {
     private String getUrl(String channel){
         Properties prop = new Properties();
         InputStream in = null;
-        File file = new File(FilePathConstants.urlFilePath);
+        File file = new File(FilePathConstants.UrlFilePath);
         try {
             in = new BufferedInputStream(new FileInputStream(file));
         } catch (FileNotFoundException e1) {

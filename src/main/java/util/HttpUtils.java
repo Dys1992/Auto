@@ -1,60 +1,141 @@
 package util;
 
+import model.httpparammodel.Params;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.Map;
+import java.util.List;
 
+/**
+ * @author fy39919
+ */
 public class HttpUtils {
 
     private static final Logger log = Logger.getLogger(HttpUtils.class);
-    private static InputStreamReader isr;
-    private static BufferedReader br;
+    private static RequestConfig requestConfig = null;
 
-
-    public static String senGet(String url){
-
-        StringBuffer sb = new StringBuffer();
-
-            try {
-                URL realUrl = new URL(url);
-                URLConnection urlConnection = realUrl.openConnection();
-                urlConnection.setAllowUserInteraction(false);
-
-                isr = new InputStreamReader(realUrl.openStream());
-                br = new BufferedReader(isr);
-                String line;
-
-                while ((line = br.readLine()) != null)
-                {
-                    sb.append(line);
-                }
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return sb.toString();
-
+    static {
+        requestConfig = RequestConfig.custom().setSocketTimeout(2000).setConnectionRequestTimeout(2000).build();
     }
 
-    public static String sendGet(String url, Map<StringBuilder,StringBuilder> param){
-        StringBuilder realUrl = new StringBuilder(url);
-        realUrl.append("?");
-        if(param != null){
-            for (Map.Entry<StringBuilder,StringBuilder> key: param.entrySet()){
-                realUrl.append(key.getKey().append("=").append(key.getValue()));
+
+    /**
+     * 发送get请求
+     * @url url 路径
+     * @param param 参数
+     * @return
+     */
+    public static String senGet(String url,String param) {
+        String realUrl = url+"?"+param;
+        String result = null ;
+        CloseableHttpClient client = HttpClients.createDefault();
+        HttpGet request = new HttpGet(realUrl);
+        request.setConfig(requestConfig);
+
+        try{
+            CloseableHttpResponse response = client.execute(request);
+
+            if(response.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
+                //读取服务器返回的字符串
+                HttpEntity entity = response.getEntity();
+                result = EntityUtils.toString(entity,"utf-8");
+            }else{
+                log.error("get请求提交失败："+realUrl);
             }
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            log.error("get请求提交失败："+realUrl);
+            e.printStackTrace();
+        } finally {
+            request.releaseConnection();
         }
 
 
-    return realUrl.toString();
+        return result;
+    }
+
+
+    public static String sendPost(String url, String strParam){
+
+        CloseableHttpClient client = HttpClients.createDefault();
+        String  result = null;
+        HttpPost httpPost = new HttpPost(url);
+        try{
+            if(null != strParam){
+
+                StringEntity entity = new StringEntity(strParam,"UTF-8");
+                entity.setContentEncoding("UTF-8");
+                entity.setContentType("application/json");
+                httpPost.setEntity(entity);
+            }
+            CloseableHttpResponse result1 = client.execute(httpPost);
+
+            if (result1.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
+                try{
+                    result = EntityUtils.toString(result1.getEntity(),"UTF-8");
+                }catch (Exception e){
+                    log.error("post请求提交失败:" + url, e);
+                }
+            }
+
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            log.error("post请求提交失败:" + url, e);
+            e.printStackTrace();
+        }
+
+        return result;
+
+    }
+
+    public static String sendPost(String url,String strParam,List<Params> connectType){
+
+        CloseableHttpClient client = HttpClients.createDefault();
+        String result = null;
+        HttpPost httpPost = new HttpPost(url);
+        try{
+            if(null != strParam){
+
+                StringEntity entity = new StringEntity(strParam,"UTF-8");
+                entity.setContentEncoding("UTF-8");
+                entity.setContentType("application/json");
+                httpPost.setEntity(entity);
+                for (Params param : connectType){
+                    httpPost.setHeader(param.getKey().toString(),param.getValue().toString());
+                }
+            }
+            CloseableHttpResponse result1 = client.execute(httpPost);
+
+            if (result1.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
+                try{
+                    result = EntityUtils.toString(result1.getEntity(),"UTF-8");
+                }catch (Exception e){
+                    log.error("post请求提交失败:" + url, e);
+                }
+            }
+
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            log.error("post请求提交失败:" + url, e);
+            e.printStackTrace();
+        }
+
+        return result;
+
     }
 
 

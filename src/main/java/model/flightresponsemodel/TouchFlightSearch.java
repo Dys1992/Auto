@@ -2,6 +2,9 @@ package model.flightresponsemodel;
 
 import java.util.List;
 
+/**
+ * @author fy39919
+ */
 public class TouchFlightSearch {
 
 

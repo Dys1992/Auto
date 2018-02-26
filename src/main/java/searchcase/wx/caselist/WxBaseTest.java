@@ -1,9 +1,8 @@
 package searchcase.wx.caselist;
 
-import org.testng.annotations.Test;
-
-import java.text.ParseException;
-
+/**
+ * @author fy39919
+ */
 public class WxBaseTest {
 
 

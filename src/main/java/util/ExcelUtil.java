@@ -15,13 +15,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * @author fy39919
+ */
 public class ExcelUtil {
     private static final Logger log = Logger.getLogger(ExcelUtil.class);
 
     public static List<FlightInfo> getExcelData(String channel) throws FileNotFoundException {
         List<FlightInfo> keyList = new ArrayList<>();
         try {
-            InputStream inputStream = new FileInputStream(FilePathConstants.excelFilePath);
+            InputStream inputStream = new FileInputStream(FilePathConstants.ExcelFilePath);
             HSSFWorkbook wb = new HSSFWorkbook(inputStream);
             HSSFSheet sheet = wb.getSheet(channel);
             HSSFRow hssfRow=sheet.getRow(1);

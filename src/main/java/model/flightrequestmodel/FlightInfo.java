@@ -1,5 +1,8 @@
 package model.flightrequestmodel;
 
+/**
+ * @author fy39919
+ */
 public class FlightInfo {
 
     private String depCode;
