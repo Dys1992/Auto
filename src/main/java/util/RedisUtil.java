@@ -37,13 +37,13 @@ public class RedisUtil {
     * MAX_IDLE
     *控制一个pool最多有多少个状态为idle(空闲的)的jedis实例，默认值也是8
     * */
-    private static int MAX_IDLE = 50;
+    private static int MAX_IDLE      = 50;
 
     /**
      * MAX_WAIT
      *等待可用连接的最大时间，单位毫秒，默认值为-1，表示永不超时。
     **/
-    private static int MAX_WAIT = 10000;
+    private static int MAX_WAIT      = 10000;
 
     /**
      * TIMEOUT
