@@ -20,9 +20,9 @@ import java.util.List;
 /**
  * @author fy39919
  */
-public class HttpUtils {
+public class HttpUtil {
 
-    private static final Logger log = Logger.getLogger(HttpUtils.class);
+    private static final Logger log = Logger.getLogger(HttpUtil.class);
     private static RequestConfig requestConfig = null;
 
     static {

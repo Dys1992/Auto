@@ -5,7 +5,7 @@ import model.flightrequestmodel.FlightInfo;
 import org.apache.log4j.Logger;
 import redis.clients.jedis.Jedis;
 import util.ExcelUtil;
-import util.HttpUtils;
+import util.HttpUtil;
 import util.RedisUtil;
 
 import java.io.*;
@@ -31,7 +31,7 @@ public class SaveSearchResponse {
                 String departureDate = getToday(FilePathConstants.FlyOffTime);
                 String url = getUrl(channel);
                 String param = getParam(channel, dep, arr, departureDate);
-                String response = HttpUtils.senGet(url, param);
+                String response = HttpUtil.senGet(url, param);
 
                 log.info(channel+"测试链接:"+url + param);
                 //返回值存入redis,key(航线)value(返回参数)
