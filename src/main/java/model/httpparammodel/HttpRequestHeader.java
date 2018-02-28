@@ -3,7 +3,7 @@ package model.httpparammodel;
 /**
  * @author fy39919
  */
-public class Params {
+public class HttpRequestHeader {
     public String key;
     public String value;
 

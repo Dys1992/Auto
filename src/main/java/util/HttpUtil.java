@@ -1,6 +1,6 @@
 package util;
 
-import model.httpparammodel.Params;
+import model.httpparammodel.HttpRequestHeader;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
@@ -101,7 +101,7 @@ public class HttpUtil {
 
     }
 
-    public static String sendPost(String url,String strParam,List<Params> connectType){
+    public static String sendPost(String url,String strParam,List<HttpRequestHeader> connectType){
 
         CloseableHttpClient client = HttpClients.createDefault();
         String result = null;
@@ -113,7 +113,7 @@ public class HttpUtil {
                 entity.setContentEncoding("UTF-8");
                 entity.setContentType("application/json");
                 httpPost.setEntity(entity);
-                for (Params param : connectType){
+                for (HttpRequestHeader param : connectType){
                     httpPost.setHeader(param.getKey().toString(),param.getValue().toString());
                 }
             }
